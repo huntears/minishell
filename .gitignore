@@ -1,0 +1,14 @@
+# Build directory
+build/
+
+# Main binary
+minishell
+
+# Testing binary
+glados
+
+# Compile commands for clangd
+compile_commands.json
+
+# Cache folder for clangd
+.cache
