@@ -21,11 +21,11 @@ static size_t count_words_and_size(const char *str, size_t *size)
     uint_fast64_t i = 0;
 
     for (; str[i]; ++i) {
-        if (isalnum(str[i]) && waiting_for_word) {
+        if (!isblank(str[i]) && waiting_for_word) {
             num_words++;
             waiting_for_word = false;
         }
-        if (!isalnum(str[i]) && !waiting_for_word)
+        if (isblank(str[i]) && !waiting_for_word)
             waiting_for_word = true;
     }
     *size = i;
@@ -38,14 +38,14 @@ static void build_lookup_table(char **lookup_table, char *str)
     bool waiting_for_word = true;
 
     for (uint_fast64_t i = 0; str[i]; ++i) {
-        if (isalnum(str[i]) && waiting_for_word) {
+        if (!isblank(str[i]) && waiting_for_word) {
             lookup_table[num_word] = str + i;
             num_word++;
             waiting_for_word = false;
         }
-        if (!isalnum(str[i]) && !waiting_for_word)
+        if (isblank(str[i]) && !waiting_for_word)
             waiting_for_word = true;
-        if (!isalnum(str[i]))
+        if (isblank(str[i]))
             str[i] = 0;
     }
     lookup_table[num_word] = NULL;

@@ -1,8 +1,8 @@
-TARGET_EXEC := minishell
+TARGET_EXEC ?= minishell
 
-TARGET_EXEC_TESTS	:=	glados
+TARGET_EXEC_TESTS	?=	glados
 
-CC	:=	clang
+CC	?=	gcc
 
 BUILD_DIR := build
 SRC_DIRS := src
@@ -18,11 +18,10 @@ INC_FLAGS := $(addprefix -I,$(INC_DIRS))
 
 CPPFLAGS := $(INC_FLAGS) -MMD -MP
 
-CFLAGS	:=	-Weverything \
-						-Wno-unsafe-buffer-usage \
-						-Wno-padded \
-						-Wno-empty-translation-unit \
-						-Wno-incompatible-pointer-types-discards-qualifiers \
+CFLAGS	:=	-Wall \
+						-Wextra \
+						-Wfloat-conversion \
+						-Wno-incompatible-pointer-types \
 						-O2 \
 						-std=c2x \
 						-pedantic
@@ -48,7 +47,7 @@ $(BUILD_DIR)/$(TARGET_EXEC_TESTS): $(OBJS)
 	$(CC) $(OBJS) -o $@ $(LDFLAGS)
 
 $(BUILD_DIR)/%.c.o: %.c
-	mkdir -p $(dir $@)
+	@mkdir -p $(dir $@)
 	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
 
 .PHONY: clean

@@ -7,7 +7,8 @@
 #include "my_str_to_word_array.h"
 
 static command_pair_mapping commands_mapping[] = {
-    { .cmd = "env", .fun = exec_cmd_env}
+    { .cmd = "env", .fun = exec_cmd_env},
+    { .cmd = "setenv", .fun = exec_cmd_setenv},
 };
 static const ssize_t num_builtin = sizeof(commands_mapping) / sizeof(command_pair_mapping);
 
@@ -25,7 +26,7 @@ command_result_t execute_command(const char *cmd, env_t *env)
     size_t num_args = get_command_length(args);
     ssize_t builtin_index;
     command_result_t cmd_result;
-    
+
     if (!num_args)
         return COMMAND_RES_OK;
     builtin_index = find_builtin(args[0]);

@@ -6,13 +6,14 @@
 #include "commands/commands.h"
 #include "main.h"
 #include "env/env.h"
+#include "utils.h"
 
 static void print_prompt(void)
 {
     write(1, "TᴖT $> ", 9);
 }
 
-int my_startpoint(int argc, const char **argv, const char **envp)
+int my_startpoint(UNUSED int argc, UNUSED const char **argv, const char **envp)
 {
     env_t env = clone_original_env(envp);
     char *cli = NULL;
