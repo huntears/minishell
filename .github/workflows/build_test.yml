@@ -1,0 +1,35 @@
+name: Build/Test CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: epitechcontent/epitest-docker:latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build project
+        run: make -j2 # -j2 max for github action as it is the hard limit
+
+      - name: Archive binary
+        uses: actions/upload-artifact@v3
+        with:
+          name: minishell-executable
+          path: minishell
+
+  tests:
+    runs-on: ubuntu-latest
+    needs: [build]
+    container:
+      image: epitechcontent/epitest-docker:latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build project and run tests
+        run: make run_tests -j2 # -j2 max for github action as it is the hard limit
