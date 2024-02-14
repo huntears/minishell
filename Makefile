@@ -24,7 +24,8 @@ CFLAGS	:=	-Weverything \
 						-Wno-empty-translation-unit \
 						-Wno-incompatible-pointer-types-discards-qualifiers \
 						-O2 \
-						-std=gnu2x
+						-std=c2x \
+						-pedantic
 
 ifeq ($(DEBUG), 1)
 	CFLAGS	+=	-ggdb

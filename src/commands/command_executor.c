@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <sys/types.h>
 
 #include "commands.h"
 #include "my_str_to_word_array.h"
