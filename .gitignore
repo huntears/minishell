@@ -12,3 +12,6 @@ compile_commands.json
 
 # Cache folder for clangd
 .cache
+
+# Mistakes
+vgcore.*
