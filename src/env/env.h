@@ -18,5 +18,6 @@ env_entry_t *get_entry_from_key(const env_t *env, const char *key);
 void add_env_entry(env_t *env, env_entry_t entry);
 void print_env(const env_t *env);
 void destroy_env(env_t *env);
+void remove_env_entry_from_key(env_t *env, const char *key);
 
 #endif /* MS_ENV_H_ */
