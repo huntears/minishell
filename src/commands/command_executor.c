@@ -10,6 +10,7 @@ static command_pair_mapping commands_mapping[] = {
     { .cmd = "env", .fun = exec_cmd_env},
     { .cmd = "setenv", .fun = exec_cmd_setenv},
     { .cmd = "unsetenv", .fun = exec_cmd_unsetenv},
+    { .cmd = "exit", .fun = exec_cmd_exit},
 };
 static const ssize_t num_builtin = sizeof(commands_mapping) / sizeof(command_pair_mapping);
 

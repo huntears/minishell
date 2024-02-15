@@ -32,5 +32,7 @@ int my_startpoint(UNUSED int argc, UNUSED const char **argv, const char **envp)
     } while (!command_result.should_exit);
     free(cli);
     destroy_env(&env);
+    if (isatty(0) && isatty(1))
+        puts("exit");
     return command_result.exit_code;
 }
