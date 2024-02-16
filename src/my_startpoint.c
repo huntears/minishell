@@ -13,9 +13,8 @@ static void print_prompt(void)
     write(1, "TᴖT $> ", 9);
 }
 
-int my_startpoint(UNUSED int argc, UNUSED const char **argv, const char **envp)
+int main_loop(env_t *env)
 {
-    env_t env = clone_original_env(envp);
     char *cli = NULL;
     size_t allocated_buffer_bytes;
     ssize_t nb_bytes_read;
@@ -28,11 +27,19 @@ int my_startpoint(UNUSED int argc, UNUSED const char **argv, const char **envp)
         if (nb_bytes_read == -1)
             break;
         cli[nb_bytes_read - 1] = '\0';
-        command_result = execute_command(cli, &env);
+        command_result = execute_command(cli, env);
     } while (!command_result.should_exit);
     free(cli);
+    return command_result.exit_code;
+}
+
+int my_startpoint(UNUSED int argc, UNUSED const char **argv, const char **envp)
+{
+    env_t env = clone_original_env(envp);
+    int exit_code = main_loop(&env);
+
     destroy_env(&env);
     if (isatty(0) && isatty(1))
         puts("exit");
-    return command_result.exit_code;
+    return exit_code;
 }
