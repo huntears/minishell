@@ -20,7 +20,7 @@ CPPFLAGS := $(INC_FLAGS) -MMD -MP
 
 CFLAGS	:=	-Wall \
 						-Wextra \
-						-Wfloat-conversion \
+						-Wconversion \
 						-Wno-incompatible-pointer-types \
 						-O2 \
 						-std=c2x \

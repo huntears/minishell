@@ -20,7 +20,7 @@ static command_result_t handle_complex_exit(const char *status)
     char *end_parsed_string;
 
     errno = 0;
-    result.exit_code = strtoul(status, &end_parsed_string, 10);
+    result.exit_code = (int) strtoul(status, &end_parsed_string, 10);
     if (errno != 0)
         return handle_complex_exit_error();
     else if (*end_parsed_string) {

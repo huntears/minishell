@@ -7,7 +7,7 @@
 // This function is 100% error prone, but it works (At least I hope)
 static void remove_entry(env_t *env, env_entry_t *entry)
 {
-    const size_t entry_index = entry - env->entries;
+    const size_t entry_index = (size_t) (entry - env->entries);
     const size_t to_copy = env->num_entry - entry_index - 1;
 
     free(entry->key);
