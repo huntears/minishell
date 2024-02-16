@@ -13,7 +13,12 @@ static void print_prompt(void)
     write(1, "TᴖT $> ", 9);
 }
 
-int main_loop(env_t *env)
+static bool is_interactive(void)
+{
+    return isatty(0) && isatty(1);
+}
+
+static int main_loop(env_t *env)
 {
     char *cli = NULL;
     size_t allocated_buffer_bytes;
@@ -21,7 +26,7 @@ int main_loop(env_t *env)
     command_result_t command_result = {0};
 
     do {
-        if (isatty(0) && isatty(1))
+        if (is_interactive())
             print_prompt();
         nb_bytes_read = getline(&cli, &allocated_buffer_bytes, stdin);
         if (nb_bytes_read == -1)
@@ -39,7 +44,7 @@ int my_startpoint(UNUSED int argc, UNUSED const char **argv, const char **envp)
     int exit_code = main_loop(&env);
 
     destroy_env(&env);
-    if (isatty(0) && isatty(1))
+    if (is_interactive())
         puts("exit");
     return exit_code;
 }
