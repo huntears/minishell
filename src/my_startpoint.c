@@ -1,3 +1,4 @@
+#include "global_state.h"
 #define _POSIX_C_SOURCE 200809L
 #include <stdio.h>
 #include <unistd.h>
@@ -41,8 +42,10 @@ static int main_loop(env_t *env)
 int my_startpoint(UNUSED int argc, UNUSED const char **argv, const char **envp)
 {
     env_t env = clone_original_env(envp);
-    int exit_code = main_loop(&env);
+    int exit_code;
 
+    init_global_state(&env);
+    exit_code = main_loop(&env);
     destroy_env(&env);
     if (is_interactive())
         puts("exit");

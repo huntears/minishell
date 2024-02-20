@@ -27,6 +27,7 @@ static bool check_env_key_validity(const char *key)
     return true;
 }
 
+// TODO: Use create_env_entry to simplify this function, perhaps?
 static command_result_t handle_setenv(const char **cmd, env_t *env, size_t nb_args)
 {
     env_entry_t entry = {
