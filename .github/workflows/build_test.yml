@@ -29,7 +29,7 @@ jobs:
     container:
       image: ghcr.io/huntears/light-epitest-c:latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: Build project and run tests
         run: make run_tests -j2 # -j2 max for github action as it is the hard limit
