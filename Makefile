@@ -38,7 +38,8 @@ $(TARGET_EXEC): $(BUILD_DIR)/$(TARGET_EXEC)
 $(BUILD_DIR)/$(TARGET_EXEC): $(OBJS)
 	$(CC) $(OBJS) -o $@ $(LDFLAGS)
 
-$(TARGET_EXEC_TESTS): CFLAGS += -DUNIT_TESTS -Wno-missing-variable-declarations -Wno-declaration-after-statement
+$(TARGET_EXEC_TESTS): CFLAGS += -Wno-missing-variable-declarations -Wno-declaration-after-statement
+$(TARGET_EXEC_TESTS): CPPFLAGS += -DUNIT_TESTS
 $(TARGET_EXEC_TESTS): LDFLAGS += -lcriterion
 $(TARGET_EXEC_TESTS): $(BUILD_DIR)/$(TARGET_EXEC_TESTS)
 	cp $(BUILD_DIR)/$(TARGET_EXEC_TESTS) $(TARGET_EXEC_TESTS)
