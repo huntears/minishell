@@ -1,23 +1,17 @@
 #include "global_state.h"
 #define _POSIX_C_SOURCE 200809L
 #include <stdio.h>
-#include <unistd.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 #include "commands/commands.h"
-#include "main.h"
 #include "env/env.h"
+#include "main.h"
 #include "utils.h"
 
-static void print_prompt(void)
-{
-    write(1, "TᴖT $> ", 9);
-}
+static void print_prompt(void) { write(1, "TᴖT $> ", 9); }
 
-static bool is_interactive(void)
-{
-    return isatty(0) && isatty(1);
-}
+static bool is_interactive(void) { return isatty(0) && isatty(1); }
 
 static int main_loop(env_t *env)
 {

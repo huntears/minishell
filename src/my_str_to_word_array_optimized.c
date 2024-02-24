@@ -55,10 +55,8 @@ char **my_str_to_word_array(const char *str)
 {
     size_t size = 0;
     const size_t num_words = count_words_and_size(str, &size);
-    char **lookup_table =
-        malloc(sizeof(char *) * (num_words + 1) + sizeof(char) * (size + 1));
-    char *str_copy =
-        (char *) lookup_table + (sizeof(char *) * (num_words + 1));
+    char **lookup_table = malloc(sizeof(char *) * (num_words + 1) + sizeof(char) * (size + 1));
+    char *str_copy = (char *) lookup_table + (sizeof(char *) * (num_words + 1));
 
     if (!lookup_table)
         return NULL;

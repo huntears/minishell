@@ -1,8 +1,8 @@
 #include <string.h>
 #include <unistd.h>
 
-#include "global_state.h"
 #include "env/env.h"
+#include "global_state.h"
 
 global_state_t g_state = {};
 

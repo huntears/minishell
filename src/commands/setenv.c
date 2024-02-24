@@ -3,8 +3,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "env/env.h"
 #include "commands.h"
+#include "env/env.h"
 
 // Checks wether the given env key is valid or not
 // This prints to stderr if the key isn't valid
@@ -36,7 +36,6 @@ static command_result_t handle_setenv(const char **cmd, env_t *env, size_t nb_ar
     };
     size_t key_len = strlen(cmd[1]);
     size_t value_len;
-    
 
     if (!check_env_key_validity(cmd[1]))
         return COMMAND_RES_KO;
@@ -65,4 +64,3 @@ command_result_t exec_cmd_setenv(const char **cmd, env_t *env)
     }
     return handle_setenv(cmd, env, nb_args);
 }
-

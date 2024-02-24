@@ -1,16 +1,16 @@
 #include <stdio.h>
-#include <string.h>
 #include <stdlib.h>
+#include <string.h>
 #include <sys/types.h>
 
 #include "commands.h"
 #include "my_str_to_word_array.h"
 
 static command_pair_mapping commands_mapping[] = {
-    { .cmd = "env", .fun = exec_cmd_env},
-    { .cmd = "setenv", .fun = exec_cmd_setenv},
-    { .cmd = "unsetenv", .fun = exec_cmd_unsetenv},
-    { .cmd = "exit", .fun = exec_cmd_exit},
+    {.cmd = "env", .fun = exec_cmd_env},
+    {.cmd = "setenv", .fun = exec_cmd_setenv},
+    {.cmd = "unsetenv", .fun = exec_cmd_unsetenv},
+    {.cmd = "exit", .fun = exec_cmd_exit},
 };
 static const ssize_t num_builtin = sizeof(commands_mapping) / sizeof(command_pair_mapping);
 

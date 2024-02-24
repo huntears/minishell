@@ -10,8 +10,8 @@ typedef struct {
     int exit_code;
 } command_result_t;
 
-#define COMMAND_RES_OK ((command_result_t) { .should_exit = false, .exit_code = 0 } )
-#define COMMAND_RES_KO ((command_result_t) { .should_exit = false, .exit_code = 1 } )
+#define COMMAND_RES_OK ((command_result_t) {.should_exit = false, .exit_code = 0})
+#define COMMAND_RES_KO ((command_result_t) {.should_exit = false, .exit_code = 1})
 
 typedef command_result_t (*command_function)(const char **, env_t *);
 

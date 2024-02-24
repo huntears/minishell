@@ -1,7 +1,7 @@
 #include <stdio.h>
 
-#include "env/env.h"
 #include "commands.h"
+#include "env/env.h"
 
 command_result_t exec_cmd_unsetenv(const char **cmd, env_t *env)
 {
@@ -15,4 +15,3 @@ command_result_t exec_cmd_unsetenv(const char **cmd, env_t *env)
         remove_env_entry_from_key(env, cmd[i]);
     return COMMAND_RES_OK;
 }
-

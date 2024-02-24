@@ -8,7 +8,8 @@ static uint64_t count_env_entries(const char **envp)
 {
     uint64_t i = 0;
 
-    for (; envp[i]; i++);
+    for (; envp[i]; i++)
+        ;
     return i;
 }
 
@@ -29,7 +30,7 @@ env_t clone_original_env(const char **envp)
         .num_entry = count_env_entries(envp),
         .entries = NULL,
     };
-    
+
     cloned_env.entries = malloc(sizeof(env_entry_t) * cloned_env.num_entry);
     for (uint64_t i = 0; i < cloned_env.num_entry; i++)
         cloned_env.entries[i] = clone_entry(envp[i]);

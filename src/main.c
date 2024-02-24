@@ -4,9 +4,6 @@
 
 #include "main.h"
 
-int main(int ac, const char **av, const char **ev)
-{
-    return my_startpoint(ac, av, ev);
-}
+int main(int ac, const char **av, const char **ev) { return my_startpoint(ac, av, ev); }
 
 #endif
